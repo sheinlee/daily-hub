@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+/runs/
+/logs/
+/config/hub_config.json
+/config/hub_state.json
+/backups/
+.pytest_cache/
+/build/
+/dist/
