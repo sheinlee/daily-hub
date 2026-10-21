@@ -128,7 +128,7 @@ class AlasAdapter(Adapter):
         env = procs.clean_env(extra={"PYTHONIOENCODING": "utf-8", "PYTHONUNBUFFERED": "1"})
         patch = self._patch(g)
         if patch:
-            # a custom runner script (e.g. one that patches Alas first) that ends with AzurLaneAutoScript(name).loop()
+            # run_alas.py installs alas_hires (16:9 screens above 1280x720), then AzurLaneAutoScript(name).loop()
             argv = [self.python(g), patch, name]
         else:
             argv = [self.python(g), "-c", f"from alas import AzurLaneAutoScript; AzurLaneAutoScript({name!r}).loop()"]
@@ -155,7 +155,9 @@ class AlasAdapter(Adapter):
                     names.append(f[:-5])
         except OSError:
             pass
-        return {"config": sorted(names), "hires_patch": []}
+        default_patch = os.path.join("..", "alas_hires", "run_alas.py")
+        found = os.path.isfile(os.path.join(g.tool_dir, default_patch))
+        return {"config": sorted(names), "hires_patch": [default_patch] if found else []}
 
     def option_labels(self):
-        return {"config": "Alas 配置名", "hires_patch": "自定义启动脚本（可选，留空=原版 Alas）"}
+        return {"config": "Alas 配置名", "hires_patch": "高分辨率补丁（alas-hires，可选；留空=原版 Alas）"}

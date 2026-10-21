@@ -50,6 +50,16 @@
 | MAA | `D:\Games\MAA`（MAA.exe） |
 | Alas | `D:\Games\AlasApp\AzurLaneAutoScript`（alas.py） |
 
+### 碧蓝航线用 2K/4K 模拟器（可选）
+
+Alas 只支持 1280x720。模拟器想开 16:9 的高分辨率（例如 3840x2160）时，可以配合 [alas-hires](https://github.com/sheinlee/alas-hires) 补丁：
+
+1. 按 alas-hires 的说明，把它解压到 AzurLaneAutoScript 所在的文件夹（需要 AlasApp / 一键包版本的 Alas）。
+2. 在“总控设置 → 碧蓝航线 → 高分辨率补丁”里填 `..\alas_hires\run_alas.py`（相对 AzurLaneAutoScript 文件夹；装好补丁后下拉框里会直接列出来）。
+3. 保存后点“预检”，确认没有“找不到高分辨率补丁”的提示。
+
+不用补丁时把这一项留空即可。
+
 ### 定时运行（可选）
 
 在 `DailyHub.exe` 所在文件夹打开**管理员 PowerShell**：

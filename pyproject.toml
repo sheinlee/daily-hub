@@ -1,6 +1,6 @@
 [project]
 name = "daily-hub"
-version = "0.1.0"
+version = "0.1.1"
 description = "Daily-task hub for mobile games on PC (游戏日常总控)"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
